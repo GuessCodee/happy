@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🎂 Happy Birthday!</title>
   <style>
+    /* Base layout */
     body {
       margin: 0;
       height: 100vh;
@@ -15,42 +16,54 @@
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
+      text-align: center;
+      padding: 0 5vw;
     }
 
+    /* Responsive heading */
     h1 {
-      font-size: 3em;
+      font-size: clamp(2rem, 6vw, 4rem);
       color: #fff;
       text-shadow: 0 0 10px rgba(255,255,255,0.8);
       animation: pop 1s ease-in-out infinite alternate;
+      margin: 0.5em 0;
+      word-break: break-word;
     }
 
+    /* Responsive subtext */
     p {
-      font-size: 1.2em;
+      font-size: clamp(1rem, 3vw, 1.5rem);
       color: white;
-      margin-top: 10px;
+      margin-top: 0.3em;
+      max-width: 600px;
+      line-height: 1.5em;
     }
 
+    /* Balloons */
     .balloon {
       position: absolute;
       bottom: -150px;
-      width: 60px;
-      height: 80px;
+      width: 8vw;
+      max-width: 60px;
+      aspect-ratio: 3 / 4;
       background: #ff6f61;
       border-radius: 50% 50% 45% 55% / 55% 55% 45% 45%;
       animation: floatUp 6s linear infinite;
+      opacity: 0.9;
     }
 
     .balloon::after {
       content: '';
       position: absolute;
       width: 2px;
-      height: 40px;
+      height: 40%;
       background: white;
-      bottom: -40px;
+      bottom: -40%;
       left: 50%;
       transform: translateX(-50%);
     }
 
+    /* Animations */
     @keyframes floatUp {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
@@ -60,25 +73,31 @@
       from { transform: scale(1); }
       to { transform: scale(1.05); }
     }
+
+    /* Responsive spacing for tiny devices */
+    @media (max-width: 480px) {
+      p { margin-top: 0.6em; }
+    }
   </style>
 </head>
 <body>
   <h1>🎉 Happy Birthday, <span id="name">My Friend</span>! 🎂</h1>
-  <p>Wishing you LUND, ASS, GAY FRIEND, PUSSY, FUCK YOU 🥳</p>
+  <p>Wishing you laughter, love, and all your dreams come true! 🥳</p>
 
   <script>
-    // Add balloons randomly
-    for (let i = 0; i < 15; i++) {
+    // Create floating balloons randomly
+    for (let i = 0; i < 18; i++) {
       const balloon = document.createElement('div');
       balloon.classList.add('balloon');
       balloon.style.left = Math.random() * 100 + 'vw';
       balloon.style.background = `hsl(${Math.random() * 360}, 80%, 60%)`;
-      balloon.style.animationDuration = (5 + Math.random() * 3) + 's';
+      balloon.style.animationDuration = (5 + Math.random() * 4) + 's';
+      balloon.style.animationDelay = (Math.random() * 3) + 's';
       document.body.appendChild(balloon);
     }
 
-    // Optional: Add your friend's name
-    document.getElementById("name").textContent = "Ritunj"; // ← change to your friend's name
+    // Friend's name (change this line)
+    document.getElementById("name").textContent = "Parth"; // ← change name here
   </script>
 </body>
 </html>
